@@ -11,7 +11,6 @@ package com.enroy.easy.job.starter.config;
 
 import com.enroy.easy.job.api.EasyJobProperties;
 import com.enroy.easy.job.api.JobExecutor;
-import com.enroy.easy.job.core.endpoint.JobManager;
 import com.enroy.easy.job.core.executor.AbstractJobExecutor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -23,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
  * @author zhuchao
  */
 @Configuration
-@ComponentScan(basePackageClasses = JobManager.class)
+@ComponentScan(basePackages = "com.enroy.easy.job.core")
 public class JobManageConfiguration {
 
   @Bean

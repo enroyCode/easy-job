@@ -1,0 +1,10 @@
+easy-job:
+  adminAddress: localhost:8081
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"

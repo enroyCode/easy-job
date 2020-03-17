@@ -9,22 +9,27 @@
  */
 package com.enroy.easy.job.core.endpoint;
 
+import com.enroy.easy.job.api.EasyJobProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.endpoint.web.annotation.RestControllerEndpoint;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author zhuchao
  */
 @Slf4j
+@Component
 @RestControllerEndpoint(id = "job")
 public class JobManager {
-  public JobManager() {
-    log.info("JobManager");
+  private EasyJobProperties properties;
+
+  public JobManager(EasyJobProperties properties) {
+    this.properties = properties;
   }
 
-  @GetMapping("test")
-  public String test() {
+  @GetMapping("register")
+  public String register() {
     return "ok";
   }
 }

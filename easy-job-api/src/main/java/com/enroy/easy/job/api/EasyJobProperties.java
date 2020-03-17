@@ -20,14 +20,27 @@ public class EasyJobProperties {
   private String adminAddress;
   /** 是否开启集群 */
   private boolean clusterEnable = false;
+  /** 调度器 */
+  private String schedulers;
   /** 执行器属性 */
-  private Executor executor;
+  private String executors;
+  /** 使用的数据库，集群时要求使用相同的数据库 */
+  private DataSourceProperties dataSource;
 
   @Data
-  public static class Executor {
-    /** 服务名 */
-    private String appname;
-    /** 实例id */
-    private String instanceId;
+  public static class DataSourceProperties {
+    private String url;
+    private String driverClassName;
+    private String username;
+    private String password;
+    private String validationQuery = "select 1";
+    private int initialSize = 0;
+    private int minIdle = 0;
+    private int maxActive = 8;
+    private long maxWait = -1;
+    private long timeBetweenEvictionRunsMillis;
+    private long minEvictableIdleTimeMillis = 30000;
+    private boolean testOnBorrow = false;
+    private boolean testOnReturn = false;
   }
 }

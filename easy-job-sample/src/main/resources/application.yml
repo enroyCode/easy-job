@@ -1,6 +1,10 @@
 easy-job:
   adminAddress: localhost:8081
-
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/easy-job?useSSL=no&useUnicode=yes&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
 management:
   server:
     port: 8081

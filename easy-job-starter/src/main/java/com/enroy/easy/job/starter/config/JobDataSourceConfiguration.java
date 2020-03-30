@@ -20,13 +20,17 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+import static com.enroy.easy.job.api.biz.EasyJobConsts.BEAN_DATASOURCE;
+import static com.enroy.easy.job.api.biz.EasyJobConsts.BEAN_JDBC_TEMPLATE;
+import static com.enroy.easy.job.api.biz.EasyJobConsts.BEAN_TX_MANAGER;
+
 /**
  * @author zhuchao
  */
 @Configuration
 public class JobDataSourceConfiguration {
-  @Bean("easy-job.dataSource")
-  @ConditionalOnMissingBean(name = "easy-job.dataSource")
+  @Bean(BEAN_DATASOURCE)
+  @ConditionalOnMissingBean(name = BEAN_DATASOURCE)
   public DataSource dataSource(EasyJobProperties properties) {
     DruidDataSource dataSource = new DruidDataSource();
     dataSource.setDriverClassName(properties.getDataSource().getDriverClassName());
@@ -45,14 +49,14 @@ public class JobDataSourceConfiguration {
     return dataSource;
   }
 
-  @Bean("easy-job.jdbcTemplate")
-  @ConditionalOnMissingBean(name = "easy-job.jdbcTemplate")
-  public JdbcTemplate jdbcTemplate(@Qualifier("easy-job.dataSource") DataSource dataSource) {
+  @Bean(BEAN_JDBC_TEMPLATE)
+  @ConditionalOnMissingBean(name = BEAN_JDBC_TEMPLATE)
+  public JdbcTemplate jdbcTemplate(@Qualifier(BEAN_DATASOURCE) DataSource dataSource) {
     return new JdbcTemplate(dataSource);
   }
 
-  @Bean("easy-job.txManager")
-  public DataSourceTransactionManager transactionManager(@Qualifier("easy-job.dataSource") DataSource dataSource) {
+  @Bean(BEAN_TX_MANAGER)
+  public DataSourceTransactionManager transactionManager(@Qualifier(BEAN_DATASOURCE) DataSource dataSource) {
     return new DataSourceTransactionManager(dataSource);
   }
 }

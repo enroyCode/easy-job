@@ -14,12 +14,7 @@
   <dependencies>
     <dependency>
       <groupId>com.enroy</groupId>
-      <artifactId>easy-job-api</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.enroy</groupId>
-      <artifactId>easy-job-core</artifactId>
+      <artifactId>easy-job-starter</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
     <dependency>

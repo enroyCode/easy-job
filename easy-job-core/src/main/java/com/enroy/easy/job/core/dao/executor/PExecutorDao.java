@@ -9,13 +9,12 @@
  */
 package com.enroy.easy.job.core.dao.executor;
 
-import com.enroy.easy.job.core.dao.EasyJobDao;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author zhuchao
  */
 @Repository
-public class PExecutorDao extends EasyJobDao {
+public class PExecutorDao {
 
 }

@@ -9,20 +9,15 @@
  */
 package com.enroy.easy.job.core.dao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.util.Assert;
-
-import javax.annotation.Resource;
-
 /**
  * @author zhuchao
  */
 public abstract class EasyJobDao {
-  @Resource(name = "easy-job.jdbcTemplate")
-  private JdbcTemplate jdbcTemplate;
-
-  public JdbcTemplate getJdbcTemplate() {
-    Assert.notNull(jdbcTemplate, "jdbcTemplate");
-    return jdbcTemplate;
-  }
+//  @Resource(name = "easy-job.jdbcTemplate")
+//  private JdbcTemplate jdbcTemplate;
+//
+//  public JdbcTemplate getJdbcTemplate() {
+//    Assert.notNull(jdbcTemplate, "jdbcTemplate");
+//    return jdbcTemplate;
+//  }
 }

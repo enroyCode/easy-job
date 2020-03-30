@@ -1,26 +1,36 @@
 package com.enroy.easy.job.admin.daemon.db;
 
-import org.springframework.data.jdbc.repository.query.Modifying;
-import org.springframework.data.jdbc.repository.query.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
 
-//@enable
-public interface DbVersionDao extends CrudRepository {
-  @Modifying
-  @Query(
-          value = "create table dbVersion( appId varchar(50), version int, lastModified datetime, primary key (appId))"
-  )
+public interface DbVersionDao {
+  @Update({
+          "create table dbVersion(",
+          "  appId varchar(50),",
+          "  version int,",
+          "  lastModified datetime,",
+          "  primary key (appId)",
+          ")"
+  })
   void createTableDbVersion();
 
-  void insert(String appId, @Param("version") long version, @Param("lastModified") Date lastModified);
+  @Insert({
+          "insert into dbVersion (appId, version) values (#{appId}, #{version})"
+  })
+  void insert(@Param("appId") String appId, @Param("version") long version, @Param("lastModified") Date lastModified);
 
-  //
+  @Select({
+          "select version from dbVersion where appId=#{appId}"
+  })
   Long getVersion(@Param("appId") String appId);
 
-  //
+  @Update({
+          "update dbVersion set version=#{version}, lastModified=#{lastModified} where appId=#{appId}"
+  })
   void update(@Param("appId") String appId, @Param("version") long version, @Param("lastModified") Date lastModified);
 
 }

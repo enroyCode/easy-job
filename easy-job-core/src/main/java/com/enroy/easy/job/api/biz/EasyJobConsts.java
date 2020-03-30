@@ -19,6 +19,10 @@ public class EasyJobConsts {
   public static final String BEAN_DATASOURCE = "easy-job.dataSource";
   /** JdbcTemplate */
   public static final String BEAN_JDBC_TEMPLATE = "easy-job.jdbcTemplate";
+
+  public static final String BEAN_SQL_SESSION_FACTORY = "easy-job.sqlSessionFactory";
+
+  public static final String BEAN_SQL_SESSION_TEMPLATE = "easy-job.sqlSessionTemplate";
   /** 事务管理器 */
   public static final String BEAN_TX_MANAGER = "easy-job.txManager";
 }
